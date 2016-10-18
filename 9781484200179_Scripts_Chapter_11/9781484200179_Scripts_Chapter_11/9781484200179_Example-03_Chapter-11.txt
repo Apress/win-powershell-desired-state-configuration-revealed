@@ -1,0 +1,11 @@
+Configuration DemoConfig {
+    Node Test {
+        File FileDemo {
+            DestinationPath = "C:\Windows\System32\Drivers\Etc\Hosts.backup"
+            Contents = ""
+            Ensure = "Present"
+        }
+    }
+}
+
+$mof = DemoConfig

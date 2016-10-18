@@ -1,0 +1,1 @@
+pvk2pfx.exe -pvk WSR2-1-DSCDEMO.pvk -spc WSR2-1-DSCDEMO.cer -pfx WSR2-1-DSCDEMO.pfx -po PassW0rd1

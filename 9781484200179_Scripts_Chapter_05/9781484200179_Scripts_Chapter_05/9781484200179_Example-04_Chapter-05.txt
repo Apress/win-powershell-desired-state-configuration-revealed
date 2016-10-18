@@ -1,0 +1,13 @@
+Configuration ArchiveDemo {
+    Node WSR2-1 {
+        Archive ArchiveDemo {
+            Destination = "C:\Scripts"
+            Path = "C:\downloads\scripts.zip"
+            Checksum = "SHA-256"
+            Validate = $True
+            Force = $True
+        }
+    }
+}
+
+ArchiveDemo

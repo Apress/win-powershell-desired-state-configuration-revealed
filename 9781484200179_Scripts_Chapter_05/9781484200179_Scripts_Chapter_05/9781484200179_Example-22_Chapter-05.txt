@@ -1,0 +1,10 @@
+Configuration ProcessDemo {
+    Node WSR2-1 {
+        WindowsProcess ProcessDemo {
+            Path = "C:\Package\winrar-x64-51b2.exe"
+            Arguments = "/S"
+        }
+    }
+}
+ 
+ProcessDemo

@@ -1,0 +1,5 @@
+$i=0
+While ($i -lt 10) {
+    "Value is $i"
+    $i += 1
+}

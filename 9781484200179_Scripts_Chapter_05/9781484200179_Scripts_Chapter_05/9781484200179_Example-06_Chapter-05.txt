@@ -1,0 +1,9 @@
+Configuration EnvironmentDemo {
+    Node WSR2-1 {
+        Environment EnvironmentDemo {
+            Name = "DemoVariable"
+        }
+    }
+}
+
+EnvironmentDemo 

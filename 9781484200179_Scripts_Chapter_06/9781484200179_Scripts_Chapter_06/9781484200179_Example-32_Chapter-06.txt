@@ -1,0 +1,7 @@
+Configuration IIS {
+    WindowsFeature WebServer {
+        Name = 'Web-Server'
+        IncludeAllSubFeature = $true
+        Ensure = 'Present'
+    }
+}

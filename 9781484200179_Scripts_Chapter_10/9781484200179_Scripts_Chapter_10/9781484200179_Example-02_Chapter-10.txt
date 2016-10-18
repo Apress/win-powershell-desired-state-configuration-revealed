@@ -1,0 +1,14 @@
+Configuration DemoConfig {
+    param (
+        [string[]]$ComputerName
+    )
+    Node ($ComputerName.Where{(Test-DscNameSpace -ComputerName $_)}) {
+        WindowsProcess ProcessDemo {
+            Path = "Notepad.exe"
+            Arguments = ""
+            Ensure = "Present"
+        }
+    }
+}
+
+DemoConfig -computername WC7-1,WS8R2-1,WS8R2-2,WSR2-3-WMF50,WSR2-1

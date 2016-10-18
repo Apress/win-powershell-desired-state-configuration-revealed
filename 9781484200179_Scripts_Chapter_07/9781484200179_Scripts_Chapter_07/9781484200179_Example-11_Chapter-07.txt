@@ -1,0 +1,18 @@
+$null = New-Item -ItemType container -Path $path
+$binFolderPath = Join-Path $path "bin"
+$null = New-Item -path $binFolderPath  -itemType "directory" -Force
+Copy-Item $dependentBinaries $binFolderPath -Force
+
+$muiPath = Join-Path $binFolderPath $language
+
+if (!(Test-Path $muiPath))
+{
+    $null = New-Item -ItemType container $muiPath        
+}
+Copy-Item $dependentMUIFiles $muiPath -Force
+
+Copy-Item $cfgfile (Join-Path $path "web.config") -Force
+Copy-Item $svc $path -Force
+Copy-Item $mof $path -Force
+Copy-Item $dispatch $path -Force
+Copy-Item $asax $path -Force

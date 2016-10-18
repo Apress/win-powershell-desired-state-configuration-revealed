@@ -1,0 +1,6 @@
+$null = New-WebAppPool -Name $appPool
+$appPoolItem = Get-Item IIS:\AppPools\$appPool
+$appPoolItem.managedRuntimeVersion = "v4.0"
+$appPoolItem.enable32BitAppOnWin64 = $true
+$appPoolItem.processModel.identityType = 0
+$appPoolItem | Set-Item

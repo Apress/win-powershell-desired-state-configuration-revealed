@@ -1,0 +1,4 @@
+Archive ArchiveDemo {
+    Path = "C:\Scripts
+    Destination = "C:\downloads\scripts.zip"
+}

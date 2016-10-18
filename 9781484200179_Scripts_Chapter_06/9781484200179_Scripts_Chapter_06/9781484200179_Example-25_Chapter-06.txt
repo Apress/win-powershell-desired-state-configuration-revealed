@@ -1,0 +1,16 @@
+Configuration FileDemo {
+    Param (
+        [pscredential]$Credential
+    )
+    Node $AllNodes.NodeName {
+        File FileDemo1 {
+            DestinationPath = "C:\Scripts2"
+            SourcePath = "\\Demo-Ad\Share"
+            Type = "Directory"
+            Ensure = "Present"
+            Credential = $Credential
+            Recurse = $true
+            Force = $true
+        }
+    }
+}

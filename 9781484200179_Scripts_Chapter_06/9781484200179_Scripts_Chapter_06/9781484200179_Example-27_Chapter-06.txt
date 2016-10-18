@@ -1,0 +1,38 @@
+/*
+@TargetNode='WSR2-1.dscdemo.lab'
+@GeneratedBy=Administrator
+@GenerationDate=05/14/2014 00:28:59
+@GenerationHost=WSR2-1
+*/
+
+instance of MSFT_Credential as $MSFT_Credential1ref
+{
+Password = "yDptAvGyCXWfs6h996FqwOyKjiVvjIJ1yN6DVA/mJxb0mw9nOrm9zM5ak6snBC1hzen6rNZ3k0/F9fiAbTkaUeXbEXYRfH0XqpmwKesGZ1BNpc5A4wchwFwPrRdHmVqvCkP5rfO7yU1ImhC7hryMhRYiO1sfAyw4UBAnM+eq96A=";
+ UserName = "dscdemo\\administrator";
+
+};
+
+instance of MSFT_FileDirectoryConfiguration as $MSFT_FileDirectoryConfiguration1ref
+{
+ResourceID = "[File]FileDemo1";
+ Type = "Directory";
+ Credential = $MSFT_Credential1ref;
+ Ensure = "Present";
+ SourceInfo = "::15::9::File";
+ DestinationPath = "C:\\Scripts2";
+ Force = True;
+ ModuleName = "PSDesiredStateConfiguration";
+ Recurse = True;
+ ModuleVersion = "1.0";
+ SourcePath = "\\\\Demo-Ad\\Share";
+
+};
+
+instance of OMI_ConfigurationDocument
+{
+ Version="1.0.0";
+ Author="Administrator";
+ GenerationDate="05/14/2014 00:28:59";
+ GenerationHost="WSR2-1";
+ ContentType="PasswordEncrypted";
+};

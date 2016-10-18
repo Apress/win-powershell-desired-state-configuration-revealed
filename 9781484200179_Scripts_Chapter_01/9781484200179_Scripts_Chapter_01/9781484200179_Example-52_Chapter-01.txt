@@ -1,0 +1,6 @@
+For ($i=$args[0];$i -lt $args[1];$i++) {
+    if ($i % 2 -eq 0) {
+        Continue
+    }
+    "Value is $i"
+}

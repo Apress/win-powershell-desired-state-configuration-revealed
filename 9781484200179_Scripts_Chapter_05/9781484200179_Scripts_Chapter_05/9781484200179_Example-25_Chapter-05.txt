@@ -1,0 +1,12 @@
+Configuration RegistryDemo {
+    Node WSR2-1 {
+        Registry RegistryDemo {
+            Key = "HKEY_LOCAL_MACHINE\SOFTWARE\Demo"
+            ValueName = "DemoValue"
+            ValueData = "This is a demo value"
+            ValueType = "String"
+        }
+    }
+}
+
+RegistryDemo

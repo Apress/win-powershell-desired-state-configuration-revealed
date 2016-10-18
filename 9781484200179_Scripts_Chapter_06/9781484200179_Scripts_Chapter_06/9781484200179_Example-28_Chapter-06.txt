@@ -1,0 +1,14 @@
+Configuration LCMCertConfig {
+    param (
+        $thumbprint
+    )
+    Node Localhost {
+        LocalConfigurationManager {
+            CertificateID = $Thumbprint 
+        }
+    }
+}
+
+$Thumbprint = (Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.Subject -eq "CN=WSR2-1.DSCDemo.Lab" }).Thumbprint
+
+LCMCertConfig -thumbprint $Thumbprint

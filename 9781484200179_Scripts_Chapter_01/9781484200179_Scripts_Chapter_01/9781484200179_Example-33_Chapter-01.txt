@@ -1,0 +1,4 @@
+$NewObject = New-Object -TypeName PSCustomObject -Property @{
+    "Name"="PowerShell"
+    "Version"=4.0
+}

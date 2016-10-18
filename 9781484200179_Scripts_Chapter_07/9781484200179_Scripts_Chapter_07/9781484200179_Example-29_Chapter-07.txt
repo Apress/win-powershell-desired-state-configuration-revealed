@@ -1,0 +1,44 @@
+mkdir C:\cert -force
+$cert = Get-ChildItem Cert:\LocalMachine\my | Where-Object { $_.Subject -eq 'CN=WSR2-2.dscdemo.lab' }
+$thumbprint = $cert.Thumbprint
+
+#Export-Certificate available only on Windows 8.1 & above and Windows Server 2012 R2 & above
+#For other down-level OS look at ther alternate method shown below
+Export-Certificate -Type CERT -Cert $cert -FilePath 'C:\Cert\WSR2-2.cer'  
+
+#Un comment and use the following method to export a certificate on down-level OS
+#$cert | Foreach-Object { 
+#    [system.IO.file]::WriteAllBytes("$home\$($_.thumbprint).cer", ($_.Export('CER'))) 
+#}
+
+$ConfigData = @{ 
+    AllNodes = @(     
+        @{  
+            NodeName = "WSR2-2.dscdemo.lab" 
+            CertificateFile = "C:\cert\WSR2-2.cer"
+        }  
+    )    
+}
+
+
+Configuration LCMMetaDemo {
+    Param (
+        [pscredential]$Credential,
+        $thumbprint
+    )
+
+    Node $AllNodes.NodeName {
+        LocalConfigurationManager {
+            CertificateID = $thumbprint
+            ConfigurationID = 'e86549dc-7a5f-45b6-9d66-560d980587a8'
+            RefreshMode = "PULL"
+            DownloadManagerName = "DSCFileDownloadManager"
+            Credential = $Credential
+            DownloadManagerCustomData = @{SourcePath = '\\WSR2-1\SMBPull\'}
+        }
+    }
+}
+
+LCMMetaDemo -Credential (Get-Credential) -ConfigurationData $ConfigData -thumbprint $thumbprint
+
+Set-DscLocalConfigurationManager -Path .\LCMMetaDemo

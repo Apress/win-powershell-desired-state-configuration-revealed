@@ -1,0 +1,33 @@
+Configuration BaseServerConfiguration {
+    param (
+        [string]$HostName,
+        [String]$IPAddress,
+        [String]$ArchivePath,
+        [String]$DestinationPath
+    )
+
+    Import-DscResource -ModuleName DSCDeepDive
+    WindowsFeature WebServer {
+        Name = "Web-Server"
+        IncludeAllSubFeature = $true
+        Ensure = "Present"
+    }
+
+    WindowsFeature NLB {
+        Name = "NLB"
+        Ensure = "Present"
+    }
+
+    Archive ScriptFolder {
+        Path = $ArchivePath
+        Destination = $DestinationPath
+        Ensure = "Present"
+        Force = $true
+    }
+
+    HostsFile HostsEntry {
+        ipAddress = $IPAddress
+        hostName = $HostName
+        Ensure = "Present"
+    }
+}

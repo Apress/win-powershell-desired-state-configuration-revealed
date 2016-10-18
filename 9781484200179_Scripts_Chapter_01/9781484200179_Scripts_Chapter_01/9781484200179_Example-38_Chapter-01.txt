@@ -1,0 +1,5 @@
+Switch ($a) {
+    {$_ -le 10} { "Less-than 10" }
+    {$_ -gt 20} { "Greater-than 20" }
+    Default { "Value is between 20 and 30" }
+}

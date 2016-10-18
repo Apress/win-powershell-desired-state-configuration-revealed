@@ -1,0 +1,1 @@
+Get-CimInstance -Query "SELECT * FROM Win32_Service Where Name='Winrm'" -CimSession $CimSession

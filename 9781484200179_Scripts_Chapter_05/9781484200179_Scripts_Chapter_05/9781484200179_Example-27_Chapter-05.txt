@@ -1,0 +1,19 @@
+Configuration ScriptDemo {
+    Node WSR2-1 {
+        Script ScriptDemo {
+            GetScript = {
+                #Ignore this for now
+            }   
+
+            SetScript = {
+                #Ignore this for now
+            }
+
+            TestScript = {
+                "This is what we return"
+            }
+        }
+    }
+}
+
+ScriptDemo

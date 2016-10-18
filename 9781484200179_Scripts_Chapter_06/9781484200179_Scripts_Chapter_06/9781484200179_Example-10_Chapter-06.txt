@@ -1,0 +1,36 @@
+$ConfigData = @{
+    AllNodes = @(
+        @{ 
+            NodeName="WSR2-1 "
+            Source = 'C:\Temp\Development-Scripts.zip'
+            Destination = 'C:\Deployment\Scripts'
+	     Force = 'False'
+        } 
+
+        @{
+            NodeName="WSR2-2"
+            Source = 'C:\Temp\Production-Scripts.zip'
+            Destination = 'C:\Deployment\Scripts'
+	     Force = 'True'
+            
+        }
+
+        @{
+            NodeName="WC81-1"
+            Source = 'C:\Temp\Development-Scripts.zip'
+            Destination = 'C:\Deployment\Scripts'
+	     Force = 'False'
+        }
+    )
+}
+
+
+Configuration ArchiveDemo {
+    Node $AllNodes.NodeName {
+        Archive ArchiveDemo {
+            Path = $Node.Source
+            Destination = $Node.Destination
+            Force = $Node.Force
+        }
+    }
+} 

@@ -1,0 +1,25 @@
+Configuration ArchiveDemo {
+    param (
+        [String[]]
+        $ComputerName,
+
+        [String]
+        $SourcePath,
+
+        [String]
+        $DestinationPath,
+
+        [switch]
+        $Force
+    )
+
+    Node $ComputerName {
+        Archive ArchiveDemo {
+            Path = $SourcePath
+            Destination = $DestinationPath
+            Force = $Force
+        }
+    }
+}
+
+ArchiveDemo -ComputerName WSR2-1, WSR2-2, WC81-1 -SourcePath "C:\Temp\Scripts.zip" -DestinationPath "C:\Deployment\Scripts" -Force

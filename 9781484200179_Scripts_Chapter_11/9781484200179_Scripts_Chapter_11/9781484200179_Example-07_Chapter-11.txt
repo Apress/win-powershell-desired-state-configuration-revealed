@@ -1,0 +1,1 @@
+Invoke-CimMethod -ComputerName WSR2-1 –Namespace "root/Microsoft/Windows/DesiredStateConfiguration" -ClassName "MSFT_DSCLocalConfigurationManager" -MethodName "ApplyConfiguration"

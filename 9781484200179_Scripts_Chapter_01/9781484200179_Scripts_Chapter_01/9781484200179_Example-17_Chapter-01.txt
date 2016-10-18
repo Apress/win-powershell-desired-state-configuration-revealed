@@ -1,0 +1,1 @@
+$name = $ShellName = "Windows PowerShell"

@@ -1,0 +1,36 @@
+/*
+@TargetNode='WSR2-1'
+@GeneratedBy=Administrator
+@GenerationDate=05/12/2014 15:34:28
+@GenerationHost=DEMO-AD
+*/
+
+instance of MSFT_Credential as $MSFT_Credential1ref
+{
+Password = "Pass@W0rd";
+ UserName = "dsc-demo\\administrator";
+
+};
+
+instance of MSFT_FileDirectoryConfiguration as $MSFT_FileDirectoryConfiguration1ref
+{
+ResourceID = "[File]FileDemo1";
+ Type = "Directory";
+ Credential = $MSFT_Credential1ref;
+ Ensure = "Present";
+ SourceInfo = "::6::9::File";
+ DestinationPath = "C:\\Scripts2";
+ ModuleName = "PSDesiredStateConfiguration";
+ Recurse = True;
+ ModuleVersion = "1.0";
+ SourcePath = "\\\\Demo-Ad\\Share";
+
+};
+
+instance of OMI_ConfigurationDocument
+{
+ Version="1.0.0";
+ Author="Administrator";
+ GenerationDate="05/12/2014 15:34:28";
+ GenerationHost="DEMO-AD";
+};

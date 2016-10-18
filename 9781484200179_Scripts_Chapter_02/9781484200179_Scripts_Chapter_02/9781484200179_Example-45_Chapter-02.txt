@@ -1,0 +1,6 @@
+#pragma namespace("\\\\.\\Root")
+
+instance of __Namespace
+{
+    Name = "MyCustomNamespace";
+};

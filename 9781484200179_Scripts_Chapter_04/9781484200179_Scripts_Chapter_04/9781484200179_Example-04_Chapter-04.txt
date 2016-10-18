@@ -1,0 +1,4 @@
+Configuration IdentifierString {
+    Node TargetSystemName {
+    }
+}

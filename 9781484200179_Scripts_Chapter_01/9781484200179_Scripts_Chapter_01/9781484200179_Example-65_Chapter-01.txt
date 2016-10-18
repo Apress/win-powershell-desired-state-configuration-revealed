@@ -1,0 +1,1 @@
+Copy-Item -Path .\Numbers.psm1 -Destination $home\Documents\WindowsPowerShell\Modules\Numbers

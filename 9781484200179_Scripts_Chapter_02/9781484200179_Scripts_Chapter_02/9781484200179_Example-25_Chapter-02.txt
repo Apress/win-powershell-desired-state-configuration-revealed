@@ -1,0 +1,3 @@
+Register-CimIndicationEvent -ClassName Win32_ProcessStartTrace -Action { 
+    $Global:ProcessEvent = $Event
+}

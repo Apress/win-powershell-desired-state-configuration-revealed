@@ -1,0 +1,1 @@
+New-DscCheckSum -ConfigurationPath C:\SMBPull -OutPath C:\SMBPull -Force

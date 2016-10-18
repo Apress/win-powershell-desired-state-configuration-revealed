@@ -1,0 +1,10 @@
+Configuration ArchiveDemo {
+    Node WSR2-1 {
+        Archive ArchiveDemo {
+            Destination = "C:\Scripts"
+            Path = "C:\downloads\scripts.zip"       
+        }
+    }
+}
+
+ArchiveDemo

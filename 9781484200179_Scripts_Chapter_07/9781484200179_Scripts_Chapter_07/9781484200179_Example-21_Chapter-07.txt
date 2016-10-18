@@ -1,0 +1,6 @@
+[hashtable] $PullSettingHash = [Ordered] @{
+    dbprovider = $jet4provider
+    dbconnectionstr = $jet4database
+    ConfigurationPath = $ConfigurationPath
+    ModulePath = $ModulePath
+}

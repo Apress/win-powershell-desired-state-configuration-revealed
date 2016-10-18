@@ -1,0 +1,29 @@
+function Get-TargetResource
+{
+    param
+    (
+        [Parameter(Mandatory)]
+        $dummy
+    )
+    return @{dummy = Test-Path "${env:SystemDrive}\Process.txt" -ErrorAction SilentlyContinue}
+}
+
+function Set-TargetResource
+{
+    param
+    (
+        [Parameter(Mandatory)]
+        $dummy
+    )
+    Get-Process -Name svchost | Out-File "${env:SystemDrive}\Process.txt"
+}
+
+function Test-TargetResource
+{
+    param
+    (
+        [Parameter(Mandatory)]
+        $dummy
+    )
+    return $false
+}

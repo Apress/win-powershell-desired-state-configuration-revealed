@@ -1,0 +1,25 @@
+Configuration WebSiteConfig
+{
+    Node WSR2-1
+    {
+        WindowsFeature WebServer1
+        {
+            Name = "Web-Server"
+        }
+ 
+        WindowsFeature ASP
+        {
+            Name = "Web-Asp-Net45"
+        }
+ 
+        Website MyWebSite
+        {
+            Ensure = "Present"
+            Name = "MyWebSite"
+            PhysicalPath = "C:\Inetpub\MyWebSite"
+            State = "Started"
+            Protocol = @("http")
+            BindingInfo = @("*:80:")
+        }
+    }
+}

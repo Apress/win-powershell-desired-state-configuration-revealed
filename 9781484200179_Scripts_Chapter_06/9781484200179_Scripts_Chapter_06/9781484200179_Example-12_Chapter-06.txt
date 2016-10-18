@@ -1,0 +1,26 @@
+@{
+    AllNodes = @(
+        @{
+            NodeName="*"
+            Destination = "C:\Deployment\Scripts"
+        }
+
+        @{ 
+            NodeName="WSR2-1" 
+            Source = 'C:\Temp\Development-Scripts.zip'
+            Force = 'False'
+        } 
+
+        @{
+            NodeName="WSR2-2"
+            Source = 'C:\Temp\Production-Scripts.zip'
+            Force = 'True'
+        }
+
+        @{
+            NodeName="WC81-1"
+            Source = 'C:\Temp\Development-Scripts.zip'
+            Force = 'False'
+        }
+    )
+}

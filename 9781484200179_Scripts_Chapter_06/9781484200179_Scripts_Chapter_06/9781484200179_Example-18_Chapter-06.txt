@@ -1,0 +1,8 @@
+@{
+    AllNodes = @(
+        @{
+            NodeName="WSR2-1"
+            PSDscAllowPlainTextPassword=$true
+         }
+   )
+}

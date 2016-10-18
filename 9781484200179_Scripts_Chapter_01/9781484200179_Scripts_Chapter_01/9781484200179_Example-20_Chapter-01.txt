@@ -1,0 +1,1 @@
+$files = Get-ChildItem -Path C:\Scripts *.ps1

@@ -1,0 +1,1 @@
+makecert -r -pe -n "CN=WSR2-1.DSCDemo.Lab" -b 01/01/2014 -e 01/01/2036 -eku 1.3.6.1.5.5.7.3.2 -sky exchange -sp "Microsoft RSA SChannel Cryptographic Provider" -sy 12 -sv WSR2-1-DSCDEMO.pvk WSR2-1-DSCDEMO.cer

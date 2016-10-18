@@ -1,0 +1,1 @@
+Import-Module -Name MyModule.psm1

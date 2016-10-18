@@ -1,0 +1,2 @@
+$CimSession = New-CimSession -ComputerName WSR2-2
+Start-ScheduledTask -CimSession $CimSession -TaskName Consistency

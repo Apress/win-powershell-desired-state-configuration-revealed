@@ -1,0 +1,27 @@
+Import-Module ServerManager
+ 
+#Check and install ASP.NET 4.5 feature
+If (-not (Get-WindowsFeature "Web-Asp-Net45").Installed)  {
+    try {
+        Add-WindowsFeature Web-Asp-Net45 –ErrorAction Stop
+    }
+    catch {
+        Write-Error $_
+    } 
+}
+ 
+#Check and install Web Server Feature
+If (-not (Get-WindowsFeature "Web-Server").Installed) {
+    try {
+        Add-WindowsFeature Web-Server –ErrorAction Stop
+    }
+    catch {
+        Write-Error $_
+    }
+}
+#Create a new website
+Import-Module Add-PSSnapin  WebAdministration
+New-WebSite -Name MyWebSite -Port 80 -HostHeader MyWebSite -PhysicalPath "$env:systemdrive\inetpub\WWWROOT\MyWebSite" 
+ 
+#Start the website
+Start-WebSite -Name MyWebSite 

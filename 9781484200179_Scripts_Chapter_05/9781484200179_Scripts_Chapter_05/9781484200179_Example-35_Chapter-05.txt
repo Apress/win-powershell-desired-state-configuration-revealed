@@ -1,0 +1,11 @@
+Configuration WindowsFeatureDemo {
+    Node WSR2-1 {
+        WindowsFeature WindowsFeatureDemo {
+            Name = "AD-Domain-Services"
+            IncludeAllSubFeature = $true 
+            Ensure = "Present"
+        }
+    }           
+}
+
+WindowsFeatureDemo

@@ -1,0 +1,2 @@
+$CimSession = New-CimSession -ComputerName WC7-1 -Port 5900
+Start-DscConfiguration -CimSession $CimSession -Path .\ScriptDemo -Verbose -Wait 

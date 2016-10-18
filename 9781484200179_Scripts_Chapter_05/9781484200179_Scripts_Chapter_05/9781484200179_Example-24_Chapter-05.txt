@@ -1,0 +1,11 @@
+Configuration ProcessDemo {
+    Node WSR2-1 {
+        WindowsProcess ProcessDemo {
+            Path = "Notepad.exe"
+            Arguments = "C:\Scripts\Archive.ps1"
+            Ensure = "Absent"
+        }
+    }
+}
+
+ProcessDemo

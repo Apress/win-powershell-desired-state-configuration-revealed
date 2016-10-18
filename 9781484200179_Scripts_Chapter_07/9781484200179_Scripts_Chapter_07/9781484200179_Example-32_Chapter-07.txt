@@ -1,0 +1,11 @@
+Configuration DemoConfig {
+    Node 'e86549dc-7a5f-45b6-9d66-560d980587a8'  {
+        WindowsProcess ProcessDemo {
+            Path = 'Notepad.exe'
+            Arguments = ''
+            Ensure = 'Absent'
+        }    
+    }
+}
+
+DemoConfig -OutputPath C:\SMBPull

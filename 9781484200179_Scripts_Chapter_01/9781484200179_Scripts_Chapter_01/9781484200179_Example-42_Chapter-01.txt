@@ -1,0 +1,5 @@
+$i = 10
+Do {
+    "Value is $i"
+    $i += 1
+} While ($i -lt 10)

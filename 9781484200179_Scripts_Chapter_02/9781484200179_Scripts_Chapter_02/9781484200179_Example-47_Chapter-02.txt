@@ -1,0 +1,7 @@
+#pragma namespace("\\\\.\\Root\\MyCustomNamespace")
+class MyCN_MyClass
+{
+    [Key] String KeyName;
+    string MyValue;
+    boolean UseValidation = false;    
+};

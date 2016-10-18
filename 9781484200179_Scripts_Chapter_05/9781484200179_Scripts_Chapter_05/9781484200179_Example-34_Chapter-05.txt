@@ -1,0 +1,12 @@
+Configuration UserDemo {
+    Node Home-Desk {
+        User UserDemo {
+            UserName = "User1"
+            FullName = "User One"
+            PasswordChangeRequired = $false
+            PasswordNeverExpires = $false
+        }
+    }
+}
+
+UserDemo

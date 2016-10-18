@@ -1,0 +1,12 @@
+Configuration ArchiveUnpack {
+    param (
+        $Source,
+        $Destination,
+        $Force
+    )
+    Archive ScriptArchive {
+        Path = $Source
+        Destination = $Destination
+        Force = $Force
+    }
+}

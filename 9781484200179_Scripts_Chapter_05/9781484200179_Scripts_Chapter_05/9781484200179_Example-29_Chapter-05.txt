@@ -1,0 +1,24 @@
+Configuration ScriptDemo {
+    Node WSR2-1 {
+        Script ScriptDemo {
+            GetScript = {
+                @{
+                    GetScript = $GetScript
+                    SetScript = $SetScript
+                    TestScript = $TestScript
+                    Result = (Get-Service -Name Audiosrv).Status
+                }
+            }   
+
+            SetScript = {
+                Set-service -Name AudioSrv -Status Running
+            }
+
+            TestScript = {
+                (Get-Service -Name Audiosrv).Status -eq 'Running'
+            }
+        }
+    }
+}
+
+ScriptDemo

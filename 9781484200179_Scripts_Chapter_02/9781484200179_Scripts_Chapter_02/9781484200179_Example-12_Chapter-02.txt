@@ -1,0 +1,1 @@
+Get-CimClass -Namespace root\wmi -ClassName Win32*

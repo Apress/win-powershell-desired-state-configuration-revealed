@@ -1,0 +1,10 @@
+Configuration FileDemo {
+    Node WSR2-1 {
+        File FileDemo {
+            DestinationPath = "C:\DSCScripts"
+            Type = "Directory"
+        }
+    }
+}
+
+FileDemo  

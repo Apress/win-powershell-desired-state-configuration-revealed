@@ -1,0 +1,2 @@
+$Cred = Get-Credential
+FileDemo -Credential $Cred

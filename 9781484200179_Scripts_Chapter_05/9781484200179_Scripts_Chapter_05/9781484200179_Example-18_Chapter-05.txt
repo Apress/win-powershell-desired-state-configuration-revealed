@@ -1,0 +1,10 @@
+Configuration PackageDemo {
+    Node WSR2-1 {
+        Package PackageDemo {
+            Name = "7-Zip"
+            Path = "C:\Package\7z920-x64.msi"
+            ProductId = "23170F69-40C1-2702-0920-000001000000"
+        }
+    }
+}
+PackageDemo

@@ -1,0 +1,11 @@
+Configuration DemoConfig {
+    Node localhost {
+        HostsFile HostsDemo {
+            IPAddress = "10.10.10.10"
+            HostName = "TestHost10"
+            Ensure = "Present"
+        }
+    }
+}
+
+DemoConfig

@@ -1,0 +1,1 @@
+Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-Dsc/Analytic'; Id=4098} -Oldest 

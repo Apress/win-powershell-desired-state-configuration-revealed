@@ -1,0 +1,1 @@
+Get-MSITable -Path .\7z920-x64.msi -Table Property | Where-Object { $_.Property -eq " ProductCode" }

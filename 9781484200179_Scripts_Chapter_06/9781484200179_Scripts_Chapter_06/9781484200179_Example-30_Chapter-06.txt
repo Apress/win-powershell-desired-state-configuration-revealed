@@ -1,0 +1,1 @@
+Start-DscCofiguration -Wait -Verbose -Path .\FileDemo

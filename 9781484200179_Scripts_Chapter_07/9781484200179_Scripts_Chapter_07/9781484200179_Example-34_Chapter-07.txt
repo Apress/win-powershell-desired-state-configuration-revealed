@@ -1,0 +1,1 @@
+New-DscCheckSum -ConfigurationPath C:\SMBPull\HostsFile_1.0.zip -OutPath C:\SMBPull

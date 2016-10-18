@@ -1,0 +1,7 @@
+Configuration WebsiteConfig {
+    Node WSR2-1 {
+        WindowsFeature WebServer1 {
+            Name = "Web-Server"
+        }
+    }
+}

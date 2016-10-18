@@ -1,0 +1,1 @@
+Add-WindowsFeature -Name DSC-Service

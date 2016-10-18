@@ -1,0 +1,1 @@
+Certutil.exe -importpfx WSR2-1-DSCDemo.pfx

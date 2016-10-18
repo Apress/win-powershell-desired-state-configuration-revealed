@@ -1,0 +1,36 @@
+@{
+    AllNodes = @(
+        @{
+            NodeName="*"
+            SourcePath = "C:\Temp\Generic-Scripts.zip"
+            Destination = "C:\Deployment\Scripts"
+        }
+
+        @{ 
+            NodeName="WSR2-1"
+            Role = "Web"
+            Force = 'False'
+        }
+
+        @{
+            NodeName="WSR2-2"
+            Role = "Database"
+            Force = 'True'
+        }
+
+        @{
+            NodeName="WSR2-3"
+            Force = 'False'
+        }
+    )
+
+    DBConfig = @{
+        SourcePath = "C:\Temp\Database-Scripts.zip"
+        ServiceToCheck = "MSSQLSERVER"
+    }
+
+    WebConfig = @{
+        SourcePath = "C:\Temp\WebServer-Scripts.zip"
+        ServiceToCheck = "inetsrv"        
+    }
+}

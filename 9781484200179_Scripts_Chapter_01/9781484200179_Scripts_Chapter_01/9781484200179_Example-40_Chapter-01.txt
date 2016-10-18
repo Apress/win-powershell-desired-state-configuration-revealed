@@ -1,0 +1,6 @@
+$processes = Get-Process
+ForEach ($process in $processes) {
+    if ($process.Handles -gt 500) {
+        $process.Name
+    }
+}

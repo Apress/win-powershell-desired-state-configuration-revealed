@@ -1,0 +1,9 @@
+Configuration ArchiveDemo {
+    Node ("WSR2-1","WSR2-2") {
+        Archive ArchiveDemo {
+            Path = "C:\Temp\Scripts.zip"
+            Destination = "C:\Deployment\Scripts"
+            Force = $true   
+        }
+    }
+}

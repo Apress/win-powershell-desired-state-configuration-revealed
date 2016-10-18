@@ -1,0 +1,3 @@
+Register-CimIndicationEvent -Query "SELECT * FROM __InstanceModificationEvent WITHIN 1 WHERE TargetInstance ISA 'Win32_Service' AND (TargetInstance.Name='AudioSrv' AND PreviousInstance.State='Running')" -Action {
+    $Global:ServiceEvent = $Event
+}

@@ -1,0 +1,5 @@
+Switch ($a) {
+    30 { "Equal to 30" }
+    40 { "Equal to 40" }
+    Default { "Value is not 30 or 40" }
+}

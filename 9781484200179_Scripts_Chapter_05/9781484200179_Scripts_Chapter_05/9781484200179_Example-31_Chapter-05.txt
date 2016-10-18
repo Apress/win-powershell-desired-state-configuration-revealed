@@ -1,0 +1,9 @@
+Configuration ServiceDemo {
+    Node WSR2-1 {
+        Service ServiceDemo {
+            Name = "AudioSrv"
+            State = "Running"    
+        }
+    }
+}
+ServiceDemo

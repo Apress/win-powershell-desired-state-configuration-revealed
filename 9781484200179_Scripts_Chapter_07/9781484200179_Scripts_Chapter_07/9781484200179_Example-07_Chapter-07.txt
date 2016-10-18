@@ -1,0 +1,2 @@
+Set-Location wsman:
+Set-Item -Path .\localhost\Listener\Listener_1084132640\Port -Value 5900 -Force

@@ -1,0 +1,58 @@
+#Path to the PullServer service and configuration files
+$pathPullServer = "$pshome\modules\PSDesiredStateConfiguration\PullServer"
+
+#Path where the DscService data is stored
+$rootDataPath ="$env:PROGRAMFILES\WindowsPowerShell\DscService"
+
+#Database Provider settings for target system inventory
+$jet4provider = "System.Data.OleDb"
+$jet4database = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=$env:PROGRAMFILES\WindowsPowerShell\DscService\Devices.mdb;"
+
+#Language settings for retrieving right MUI files
+$culture = Get-Culture
+$language = $culture.TwoLetterISOLanguageName
+
+#Dependent service binaries
+$dependentBinaries = "$pathPullServer\Microsoft.Powershell.DesiredStateConfiguration.Service.dll"
+
+#Dependent service MUI files based on $Language value
+$dependentMUIFiles = "$pathPullServer\$language\Microsoft.Powershell.DesiredStateConfiguration.Service.Resources.dll"
+
+#Path to the ASAX file used for the endpoint
+$asax = "$pathPullServer\Global.asax"
+
+#Application Pool name
+$appPool = "PSWS"
+
+#Application pool identity
+$applicationPoolIdentityType = "LocalSystem"
+
+#Path to the web.config file for the Pull Service endpoint 
+$cfgfile = "$pathPullServer\PSDSCPullServer.config"
+
+#Path to the pull service definition file
+$svc = "$pathPullServer\PSDSCPullServer.svc"
+
+#Path to the Pull service MOF file
+$mof = "$pathPullServer\PSDSCPullServer.mof"
+
+#Path to the Pull service dispatch XML configuration file
+$dispatch = "$pathPullServer\PSDSCPullServer.xml"
+
+#Name of the IIS site for pull service
+$Site = "PullSvc"
+
+#Name of the IIS web application for the pull service
+$App = "PullSvc"
+
+#Port number to be used for the Pull Service endpoint
+$Port = "8080"
+
+#Path to the site root directory
+$Path = "$env:SystemDrive\inetpub\wwwroot\$Site"
+
+#Path where the custom resource modules for distribution be stored
+$ModulePath = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Modules"
+
+#Path where the configuration for distribution be stored
+$ConfigurationPath = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Configuration"

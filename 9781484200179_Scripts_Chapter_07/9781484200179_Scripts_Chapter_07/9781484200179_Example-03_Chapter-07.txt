@@ -1,0 +1,1 @@
+Get-Job -Name Job11 | Get-Member -MemberType Properties

@@ -1,0 +1,1 @@
+($a -lt 15 -and $b -gt 18) -or $a+$b -eq 30

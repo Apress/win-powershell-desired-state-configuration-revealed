@@ -1,0 +1,1 @@
+Set-Service -Name WinRM -ComputerName WC81-1 -StartupType Automatic -Status Running -Verbose

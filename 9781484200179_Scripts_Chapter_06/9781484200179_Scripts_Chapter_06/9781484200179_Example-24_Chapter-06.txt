@@ -1,0 +1,8 @@
+$ConfigData = @{ 
+    AllNodes = @(     
+        @{  
+            NodeName = "WSR2-1.dscdemo.lab" 
+            CertificateFile = "C:\Scripts\WSR2-1-DSCDEMO.cer"
+        }; 
+    );    
+}

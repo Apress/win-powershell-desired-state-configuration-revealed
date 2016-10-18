@@ -1,0 +1,1 @@
+$a = "PowerShell",4.0,"Windows",2012

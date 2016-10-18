@@ -1,0 +1,1 @@
+$CimSession = New-CimSession -ComputerName WC81-1,DSC-Demo

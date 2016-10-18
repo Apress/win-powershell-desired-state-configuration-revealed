@@ -1,0 +1,3 @@
+$webSite = New-WebSite -Name $site -Id $siteID -Port $port -IPAddress "*" -PhysicalPath $path -ApplicationPool $appPool -Ssl
+Remove-Item IIS:\SSLBindings\0.0.0.0!$port -ErrorAction Ignore
+$null = Get-Item CERT:\LocalMachine\MY\$certificate | New-Item IIS:\SSLBindings\0.0.0.0!$port 

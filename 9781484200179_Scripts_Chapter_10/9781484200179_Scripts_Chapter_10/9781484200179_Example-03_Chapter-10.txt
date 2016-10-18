@@ -1,0 +1,22 @@
+$ConfigData = @{
+    AllNodes = @( 
+             @{ NodeName = "*"},
+             @{ NodeName = "WC7-1"},
+             @{ NodeName = "WS8R2-1"},
+             @{ NodeName = "WS8R2-2"},
+             @{ NodeName = "WSR2-3-WMF50"},
+             @{ NodeName = "WSR2-1"}
+    );
+}
+
+Configuration DemoConfig {
+    Node $AllNodes.Where{(Test-DscNameSpace -ComputerName $_.NodeName)}.NodeName {
+        WindowsProcess ProcessDemo {
+            Path = "Notepad.exe"
+            Arguments = ""
+            Ensure = "Present"
+        }
+    }
+}
+
+DemoConfig -ConfigurationData $ConfigData 

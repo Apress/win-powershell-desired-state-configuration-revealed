@@ -1,0 +1,9 @@
+Configuration UserDemo {
+    Node Home-Desk {
+        User UserDemo {
+            UserName = "User1"
+        }
+    }
+}
+
+UserDemo

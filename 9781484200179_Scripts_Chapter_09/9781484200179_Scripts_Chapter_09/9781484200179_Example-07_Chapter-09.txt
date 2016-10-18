@@ -1,0 +1,39 @@
+function Get-TargetResource
+{
+    [OutputType([Hashtable])]
+    param (
+        [parameter(Mandatory)]
+        [string]
+        $HostName,
+        [parameter(Mandatory)]
+        [string]
+        $IPAddress
+    )
+    
+    $Configuration = @{
+        HostName = $hostName
+        IPAddress = $IPAddress
+    }
+
+    Write-Verbose "Checking if hosts file entry exists or not"
+    try {
+        if ((Get-Content "${env:windir}\system32\drivers\etc\hosts" -ErrorAction Stop) -match "^[^#]*$ipAddress\s+$hostName") {
+            Write-Verbose "Hosts file entry does exists"
+            $Configuration.Add('Ensure','Present')
+        } else {
+            Write-Verbose "Hosts file entry does not exist"
+            $Configuration.Add('Ensure','Absent')
+        }
+        return $Configuration
+    }
+
+    catch {
+        $exception = $_    
+        Write-Verbose "Error occurred while running Get-TargetResource function"
+        while ($exception.InnerException -ne $null)
+        {
+            $exception = $exception.InnerException
+            Write-Verbose $exception.message
+        }        
+    }
+}

@@ -1,0 +1,1 @@
+Get-CimClass -ClassName MSFT_DscLocalConfigurationManager -Namespace root/microsoft/Windows/DesiredStateConfiguration | Select -ExpandProperty CimClassMethods 

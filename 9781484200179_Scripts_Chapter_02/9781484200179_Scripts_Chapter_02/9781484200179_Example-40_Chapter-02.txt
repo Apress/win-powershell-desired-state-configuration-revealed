@@ -1,0 +1,7 @@
+Measure-Command -Expression {
+    Get-CimInstance -Query "SELECT * FROM Win32_Service Where Name='Winrm'" -ComputerName WS12-R2-1,DSC-Demo
+} | Select-Object Milliseconds
+
+Measure-Command -Expression {
+    Get-CimInstance -Query "SELECT * FROM Win32_Service Where Name='Winrm'" -CimSession $CimSession
+} | Select-Object Milliseconds

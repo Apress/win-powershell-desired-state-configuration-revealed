@@ -1,0 +1,10 @@
+Configuration WindowsFeatureDemo {
+    Node WSR2-1 {
+        WindowsFeature WindowsFeatureDemo {
+            Name = "NET-Framework-Core"
+            Source = "D:\Sources\SxS"
+        }
+    }           
+}
+
+WindowsFeatureDemo

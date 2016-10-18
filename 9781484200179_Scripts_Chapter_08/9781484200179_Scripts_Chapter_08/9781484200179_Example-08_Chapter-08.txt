@@ -1,0 +1,5 @@
+$Url = 'http://localhost:9090/DscConformance/PSDSCComplianceServer.svc/Status'
+$ContentType = "application/json"
+$response = Invoke-WebRequest -Uri $Url -Method Get -ContentType $ContentType -UseDefaultCredentials -Headers @{Accept = $ContentType}
+$jsonResponse = ConvertFrom-Json $response.Content
+$jsonResponse.value

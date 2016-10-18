@@ -1,0 +1,6 @@
+if ($a -eq 10) {
+    "Value is equal to 10"
+}
+else {
+    "Value is not equal to 10"
+} 

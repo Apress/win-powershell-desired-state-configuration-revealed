@@ -1,0 +1,2 @@
+$siteID = (Get-Website | Sort-Object ID | Select-Object -Last 1 ID).ID+1
+$webSite = New-WebSite -Name $site -Id $siteID -Port $port -IPAddress "*" -PhysicalPath $path -ApplicationPool $appPool 

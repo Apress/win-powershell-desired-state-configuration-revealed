@@ -1,0 +1,13 @@
+Configuration PullClientConfig {
+    Node Localhost {
+        LocalConfigurationManager {
+            RefreshMode = "Pull"
+            DownloadManagerName = "WebDownloadManager"
+            DownloadManagerCustomData = @{ServerUrl = "http://wsr2-1.dscdemo.lab:8080/PullSvc/PSDSCPullServer.svc/"}
+        }
+    }
+}
+
+PullClientConfig
+
+Set-DscLocalConfigurationManager -Path .\PullClientConfig

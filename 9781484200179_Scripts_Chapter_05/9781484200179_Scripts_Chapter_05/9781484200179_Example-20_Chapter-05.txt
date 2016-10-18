@@ -1,0 +1,11 @@
+Configuration PackageDemo {
+    Node WSR2-1 {
+        Package PackageDemo {
+            Name = "Test"
+            ProductId = ""
+            Path = "C:\Package\7z920-x64.msi"
+            Ensure = "Absent"
+        }
+    }
+}
+PackageDemo

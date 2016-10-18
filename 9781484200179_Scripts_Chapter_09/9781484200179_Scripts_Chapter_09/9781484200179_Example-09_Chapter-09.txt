@@ -1,0 +1,10 @@
+$param = @{
+    guid = [Guid]::NewGuid()
+    author = "Ravikanth"
+    company = "DSC Demos LLC"
+    moduleversion = "1.0"
+    description = "DSC resource to manage hosts file entries"
+    path= 'C:\Scripts\DSC_HostsFile.psd1'
+}
+
+New-ModuleManifest @param 

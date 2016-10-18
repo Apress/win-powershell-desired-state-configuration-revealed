@@ -1,0 +1,9 @@
+Configuration ArchiveDemo {
+    Node $AllNodes.NodeName {
+        Archive ArchiveDemo {
+            Path = $Node.Source
+            Destination = $Node.Destination
+            Force = $Node.Force
+        }
+    }
+} 

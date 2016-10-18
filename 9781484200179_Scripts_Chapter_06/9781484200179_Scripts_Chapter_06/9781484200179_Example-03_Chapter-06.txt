@@ -1,0 +1,13 @@
+Configuration ArchiveDemo {
+    param (
+        [String[]]$ComputerName
+    )
+
+    Node $ComputerName {
+        Archive ArchiveDemo {
+            Path = "C:\Temp\Scripts.zip"
+            Destination = "C:\Deployment\Scripts"
+            Force = $true
+        }
+    }
+}

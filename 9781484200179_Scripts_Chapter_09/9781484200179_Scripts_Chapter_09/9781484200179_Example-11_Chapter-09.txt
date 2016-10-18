@@ -1,0 +1,12 @@
+Configuration DemoConfig {
+    Import-DscResource -Name DSC_HostsFile
+    Node Localhost {
+        HostsFile DemoHosts {
+            IPAddress = "10.10.10.10"
+            HostName = "TestServer10"
+            Ensure = "Present"
+        }
+    }
+}
+
+DemoConfig

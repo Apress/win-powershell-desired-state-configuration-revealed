@@ -1,0 +1,1 @@
+New-WSManInstance winrm/config/Listener -SelectorSet @{Transport='HTTPS';Address="*"} -ValueSet @{Hostname="WC81-1";CertificateThumbprint="2A1E385D32736BA72378E311B853709E03F91C89"}

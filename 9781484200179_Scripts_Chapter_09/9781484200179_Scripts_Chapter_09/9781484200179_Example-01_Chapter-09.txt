@@ -1,0 +1,9 @@
+[ClassVersion("1.0.0.0"), FriendlyName("VirtualMachine")]
+class MyDSC_VirtualMachine : OMI_BaseResource
+{
+    [key, Description("Specifies the name of the Virtual Machine.")] string VMName;
+    [write, Description("Specifies description for the Virtual Machine")] string Description;
+    [required, Description("Specifies the path of the VHD")] string VHDPath;
+    [read, Description("Specifies the virtual machine identifer")] string VMID;
+    [write,ValueMap{"Present", "Absent"},Values{"Present", "Absent"}] string Ensure;
+};

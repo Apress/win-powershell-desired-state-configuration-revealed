@@ -1,0 +1,12 @@
+Configuration RegistryDemo {
+    Node WSR2-1 {
+        Registry RegistryDemo {
+            Key = "HKEY_LOCAL_MACHINE\SOFTWARE\Demo"
+            ValueName = "IsDemo"
+            ValueData = "0x01"
+            ValueType = "Dword"
+            Hex = $true
+        }
+    }
+}
+RegistryDemo

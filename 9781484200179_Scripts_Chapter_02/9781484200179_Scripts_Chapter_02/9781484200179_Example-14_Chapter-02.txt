@@ -1,0 +1,9 @@
+Function Get-CimNamespace {
+    Param (
+        $Namespace='root'
+    )
+    Get-CimInstance -Namespace $Namespace -ClassName __NAMESPACE | ForEach-Object {
+            ($ns = '{0}\{1}' -f $Namespace,$_.Name)
+            Get-CimNamespace $ns
+    }
+}

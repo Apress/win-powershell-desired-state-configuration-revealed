@@ -1,0 +1,15 @@
+Configuration FileDemo {
+    Param (
+        [pscredential]$Credential
+    )
+    Node WSR2-1 {
+        File FileDemo1 {
+            DestinationPath = "C:\Scripts2"
+            SourcePath = "\\Demo-Ad\Share"
+            Type = "Directory"
+            Ensure = "Present"
+            Credential = $Credential
+            Recurse = $true
+        }
+    }
+}

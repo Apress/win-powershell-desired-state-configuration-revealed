@@ -1,0 +1,11 @@
+Configuration CrossDomainConfig {
+    Node WSR2-4 {
+        WindowsProcess ProcessDemo {
+            Path = "Notepad.exe"
+            Arguments = ""
+            Ensure = "Present"
+        }    
+    }
+}
+
+CrossDomainConfig

@@ -1,0 +1,2 @@
+$SessionOption = New-WSManSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+Connect-WSMan -ComputerName WC81-1 -SessionOption $SessionOption -UseSSL

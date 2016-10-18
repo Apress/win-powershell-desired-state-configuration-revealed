@@ -1,0 +1,12 @@
+Configuration DemoConfig {
+    Import-DscResource -ModuleName DSCDeepdive
+    Node localhost {
+        TestDscCache DscCache {
+            dummy = "Dummy Value"
+        }
+    }
+}
+
+DemoConfig
+
+Start-DscConfiguration -Verbose -Wait -Path .\DemoConfig

@@ -1,0 +1,19 @@
+Configuration SharePointConfig {
+    Import-DscResource -ModuleName DSCDeepDive
+    Node SP-FE-1 {
+        BaseServerConfiguration BaseConfig1 {
+            HostName = "SQL-DB-1"
+            IPAddress = "10.10.10.192"
+            ArchivePath = "\\WDS-1\Staging\Server-FE.zip"
+            DestinationPath = "C:\Scripts"
+        }
+
+        HostsFile HostEntry {
+            IPaddress = "192.168.100.1"
+            Hostname = "Gateway"
+            Ensure = "Present"
+        }
+    }
+}
+
+SharePointConfig

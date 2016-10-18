@@ -1,0 +1,10 @@
+Configuration ServiceCheck {
+    param (
+        $Name
+    )
+ 
+    WindowsService SQLCheck {
+        Name = $Name
+        State = 'Running'
+    }
+}

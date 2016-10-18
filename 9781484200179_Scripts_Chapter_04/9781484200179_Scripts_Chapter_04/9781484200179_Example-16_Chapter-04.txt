@@ -1,0 +1,9 @@
+Configuration LCMConfig {
+    Node "WSR2-1" {
+        LocalConfigurationManager {
+            ConfigurationMode = "ApplyAndAutoCorrect"
+        }
+    }
+}
+
+LCMConfig 

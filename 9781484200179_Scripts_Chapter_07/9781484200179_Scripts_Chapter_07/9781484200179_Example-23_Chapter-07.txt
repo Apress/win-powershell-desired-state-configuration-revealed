@@ -1,0 +1,3 @@
+foreach ($key in $PullSettingHash.Keys) {
+    Set-AppSettingsInWebconfig -path $Path -key $key -value $PullSettingHash[$key]
+}

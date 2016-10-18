@@ -1,0 +1,4 @@
+if (Test-Path $PSScriptRoot\en-us)
+{
+    Import-LocalizedData LocalizedData -filename HostsFileProvider.psd1
+}

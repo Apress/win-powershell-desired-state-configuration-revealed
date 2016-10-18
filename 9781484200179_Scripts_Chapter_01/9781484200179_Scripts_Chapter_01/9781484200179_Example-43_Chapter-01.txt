@@ -1,0 +1,5 @@
+$i = 0
+Do {
+    "Value is $i"
+    $i += 1
+} Until ($i -gt 10)

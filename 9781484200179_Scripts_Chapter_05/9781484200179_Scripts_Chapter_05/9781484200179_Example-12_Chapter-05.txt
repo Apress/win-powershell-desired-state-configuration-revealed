@@ -1,0 +1,9 @@
+Configuration GroupDemo {
+    Node Home-Desk {
+        Group GroupDemo {
+            GroupName = "Group1"
+        }
+    }
+}
+
+GroupDemo

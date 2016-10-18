@@ -1,0 +1,11 @@
+$Auths = "anonymous","basic","windows"
+foreach ($auth in $Auths) {
+    [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Administration") | Out-Null
+    $webAdminSrvMgr = new-object Microsoft.Web.Administration.ServerManager
+    $appHostConfig = $webAdminSrvMgr.GetApplicationHostConfiguration()
+    $authenticationType = "$($auth)Authentication"
+    $appHostConfigSection = $appHostConfig.GetSection("system.webServer/security/authentication/$authenticationType", $Site)
+    $appHostConfigSection.OverrideMode="Allow"
+    $webAdminSrvMgr.CommitChanges()
+    Start-Sleep 4
+} 

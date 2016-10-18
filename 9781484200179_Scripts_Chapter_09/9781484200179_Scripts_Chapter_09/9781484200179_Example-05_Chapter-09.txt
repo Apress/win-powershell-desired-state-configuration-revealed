@@ -1,0 +1,47 @@
+function Test-TargetResource
+{
+    [OutputType([boolean])]
+    param (
+        [parameter(Mandatory)]
+        [string]
+        $HostName,
+        [parameter(Mandatory)]
+        [string]
+        $IPAddress,
+        [ValidateSet('Present','Absent')]
+        [string]
+        $Ensure = 'Present'
+    )  
+
+    try {
+        Write-Verbose "Checking if the hosts file entry exists or not"
+        $entryExist = ((Get-Content "${env:windir}\system32\drivers\etc\hosts" -ErrorAction Stop) -match "^[^#]*$ipAddress\s+$hostName")
+
+        if ($Ensure -eq "Present") {
+            if ($entryExist) {
+                Write-Verbose "Hosts file entry exists for the given parameters; nothing to configure."
+                return $true
+            } else {
+                Write-Verbose "Hosts file entry does not exist while it should; it will be added."
+                return $false
+            }
+        } else {
+            if ($entryExist) {
+                Write-Verbose "Hosts file entry exists while it should not; it must be removed."
+                return $false
+            } else {
+                Write-Verbose "Hosts file entry does not exist; nothing to configure."
+                return $true
+            }
+        }
+    }
+    catch {
+        $exception = $_    
+        Write-Verbose "Error occurred while executing Test-TargetResource function"
+        while ($exception.InnerException -ne $null)
+        {
+            $exception = $exception.InnerException
+            Write-Verbose $exception.message
+        }
+    }
+}

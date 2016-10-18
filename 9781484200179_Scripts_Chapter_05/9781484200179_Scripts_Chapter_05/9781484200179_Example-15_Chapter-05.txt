@@ -1,0 +1,9 @@
+Configuration LogDemo {
+    Node WSR2-1 {
+        Log LogDemo {
+            Message = "This is a test message from DSC Demo"
+        }
+    }
+}
+
+LogDemo

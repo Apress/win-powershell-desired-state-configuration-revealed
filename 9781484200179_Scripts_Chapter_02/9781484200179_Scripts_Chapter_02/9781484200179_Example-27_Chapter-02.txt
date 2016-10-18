@@ -1,0 +1,3 @@
+Register-CimIndicationEvent -Query "SELECT * FROM Win32_Service" -Action {
+    $Global:ServiceEvent = $Event
+} 

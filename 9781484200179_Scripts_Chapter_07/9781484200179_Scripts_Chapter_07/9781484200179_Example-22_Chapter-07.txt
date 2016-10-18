@@ -1,0 +1,55 @@
+function Set-AppSettingsInWebconfig
+{
+    param (
+                
+        # Physical path for the IIS Endpoint on the machine (possibly under inetpub/wwwroot)
+        [parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [String] $path,
+        
+        # Key to add/update
+        [parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [String] $key,
+
+        # Value 
+        [parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [String] $value
+
+        )
+                
+    $webconfig = Join-Path $path "web.config"
+    [bool] $Found = $false
+
+    if (Test-Path $webconfig)
+    {
+        $xml = [xml](get-content $webconfig)
+        $root = $xml.get_DocumentElement() 
+
+        foreach( $item in $root.appSettings.add) 
+        { 
+            if( $item.key -eq $key ) 
+            { 
+                $item.value = $value; 
+                $Found = $true;
+            } 
+        }
+
+        if( -not $Found)
+        {
+            $newElement = $xml.CreateElement("add")                               
+            $nameAtt1 = $xml.CreateAttribute("key")                    
+            $nameAtt1.psbase.value = $key;                                
+            $null = $newElement.SetAttributeNode($nameAtt1)
+                                   
+            $nameAtt2 = $xml.CreateAttribute("value")                      
+            $nameAtt2.psbase.value = $value;                       
+            $null = $newElement.SetAttributeNode($nameAtt2)       
+                                   
+            $null = $xml.configuration["appSettings"].AppendChild($newElement)   
+        }
+    }
+
+    $xml.Save($webconfig) 
+}

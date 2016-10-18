@@ -1,0 +1,2 @@
+Get-CimSession 
+Remove-CimSession -Id 2

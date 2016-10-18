@@ -1,0 +1,5 @@
+[Dynamic] 
+class SampleClassName : ParentClass
+{
+    [key] string KeyName;
+};

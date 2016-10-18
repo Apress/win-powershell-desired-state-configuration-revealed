@@ -1,0 +1,1 @@
+Invoke-WSManAction -Action StopService -Resourceuri wmicimv2/win32_service  -Selectorset @{name="audiosrv"} -ComputerName WC81-1

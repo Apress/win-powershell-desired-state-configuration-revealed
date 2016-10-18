@@ -1,0 +1,1 @@
+$PROFILE.PSExtended.PSObject.Properties | Select-Object Name,Value | Format-Table -AutoSize 

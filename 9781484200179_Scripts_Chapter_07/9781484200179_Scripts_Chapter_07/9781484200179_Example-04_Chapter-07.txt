@@ -1,0 +1,1 @@
+Get-Job -Name job11 | Select Debug, Error, Output, Verbose, Warning

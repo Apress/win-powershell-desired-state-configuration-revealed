@@ -1,0 +1,11 @@
+Configuration EnvironmentDemo {
+    Node WSR2-1 {
+        Environment EnvironmentDemo {
+            Name = "Path"
+            Value = "C:\Scripts\MyModules"
+            Path = $true
+        }
+    }
+}
+
+EnvironmentDemo 

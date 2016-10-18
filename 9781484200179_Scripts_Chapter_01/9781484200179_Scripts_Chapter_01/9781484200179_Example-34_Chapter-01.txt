@@ -1,0 +1,4 @@
+$NewObject = [PSCustomObject] @{
+    "Name"="PowerShell"
+    "Version"=4.0
+}

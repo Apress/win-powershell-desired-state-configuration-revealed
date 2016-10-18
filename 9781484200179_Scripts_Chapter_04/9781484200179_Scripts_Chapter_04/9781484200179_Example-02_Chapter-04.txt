@@ -1,0 +1,3 @@
+Import-Module -Name PSDesiredStateConfiguration 
+Get-Module -Name PSDesiredStateConfiguration
+Get-Module -Name PSDesiredStateConfiguration | Select RootModule 

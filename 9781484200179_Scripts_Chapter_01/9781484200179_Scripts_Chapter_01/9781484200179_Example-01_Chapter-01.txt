@@ -1,0 +1,6 @@
+@echo off
+For /F "tokens=*" %%a IN ('"dir /s /-c /a | find "bytes" | find /v "free""') do Set xsummary=%%a
+For /f "tokens=1,2 delims=)" %%a in ("%xsummary%") do set xfiles=%%a&set xsize=%%b
+Set xsize=%xsize:bytes=%
+Set xsize=%xsize: =%
+Echo Size is: %xsize% Bytes

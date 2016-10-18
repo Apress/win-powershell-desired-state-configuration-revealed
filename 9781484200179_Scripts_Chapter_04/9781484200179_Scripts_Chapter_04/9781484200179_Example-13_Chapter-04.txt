@@ -1,0 +1,1 @@
+WebSiteConfig -OutputPath C:\DSCMofs

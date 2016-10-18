@@ -1,0 +1,17 @@
+Function Test-DscNamespace {
+    Param (
+	$ComputerName = $env:COMPUTERNAME
+    )
+    if (Get-CimInstance -ComputerName $ComputerName `
+                        -Namespace root\Microsoft\Windows `
+                        -ClassName __NAMESPACE `
+                        -Filter "name='DesiredStateConfiguration'" `
+                        -ErrorAction SilentlyContinue) 
+    {
+        $true
+    } 
+    else 
+    {
+        $false
+    }
+}

@@ -1,0 +1,111 @@
+#For Conformance Server
+Add-WindowsFeature -Name Web-Windows-Auth
+
+#Default Values for non-blue Windows 8.1  endpoints
+$pathPullServer = "$pshome\modules\PSDesiredStateConfiguration\PullServer"
+$rootDataPath ="$env:PROGRAMFILES\WindowsPowerShell\DscService"
+
+#Culture to identify the right binaries
+$culture = Get-Culture
+$language = $culture.TwoLetterISOLanguageName
+
+#List of dependent binaries for the IIS endpoint
+$dependentBinaries = "$pathPullServer\Microsoft.Powershell.DesiredStateConfiguration.Service.dll"
+$dependentMUIFiles = "$pathPullServer\$language\Microsoft.Powershell.DesiredStateConfiguration.Service.Resources.dll"
+
+#Path of the ASAX file
+$asax = "$pathPullServer\Global.asax"
+
+#Application pool identity. This has to be an existing one
+#If you want to create a new app pool, refer to chapter 7
+$appPool = "PSWS"
+
+#Database Provider settings for target system inventory
+$jet4provider = "System.Data.OleDb"
+$jet4database = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=$env:PROGRAMFILES\WindowsPowerShell\DscService\Devices.mdb;"
+
+#Compliance Server Files
+#Template web.config file for the conformance endpoint
+$cfgfile = "$pathPullServer\PSDSCComplianceServer.config"
+
+# WCF service endpoint file
+$svc = "$pathPullServer\PSDSCComplianceServer.svc"
+
+#MOF file that defines the schema for the endpoint
+$mof = "$pathPullServer\PSDSCComplianceServer.mof"
+
+#Conformance endpoint XML
+$dispatch = "$pathPullServer\PSDSCComplianceServer.xml"
+
+#Name of the Conformance Endpoint 
+$Site = "DscConformance"
+
+#Name of the web application for the conformance endpoint site
+$App = "DscConformance"
+
+#Port number for the conformance endpoint
+$Port = "9090"
+
+#Physical path for storing endpoint files
+$Path = "$env:SystemDrive\inetpub\wwwroot\$Site"
+
+#Service Name
+$svcName = Split-Path $svc -Leaf
+
+#Create physical path for the endpoint
+$null = New-Item -ItemType container -Path $path
+$binFolderPath = Join-Path $path "bin"
+$null = New-Item -path $binFolderPath  -itemType "directory" -Force
+
+#Copy files required for the endpoint to physical path
+Copy-Item $dependentBinaries $binFolderPath -Force
+$muiPath = Join-Path $binFolderPath $language
+
+if (!(Test-Path $muiPath))
+{
+    $null = New-Item -ItemType container $muiPath        
+}
+Copy-Item $dependentMUIFiles $muiPath -Force
+
+Copy-Item $cfgfile (Join-Path $path "web.config") -Force
+Copy-Item $svc $path -Force
+Copy-Item $mof $path -Force
+Copy-Item $dispatch $path -Force
+Copy-Item $asax $path -Force
+
+#Restart Default App Apool
+Restart-WebAppPool -Name "DefaultAppPool"
+
+#Create the endpoint site and web application
+#For steps on HTTPS endpoint, refer to chapter 7
+$siteID = (Get-Website | Sort-Object ID | Select-Object -Last 1 ID).ID+1
+$webSite = New-WebSite -Name $site -Id $siteID -Port $port -IPAddress "*" -PhysicalPath $path -ApplicationPool $appPool
+$null = New-WebApplication -Name $app -Site $site -PhysicalPath $path -ApplicationPool $appPool
+
+#Start all web sites
+Get-WebSite | Start-Website
+
+#Set the authentication for the endpoint
+$Auths = "anonymous","basic","windows" 
+[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Administration") | Out-Null  
+foreach ($auth in $Auths) {
+    $webAdminSrvMgr = new-object Microsoft.Web.Administration.ServerManager
+    $appHostConfig = $webAdminSrvMgr.GetApplicationHostConfiguration()
+    $authenticationType = "$($auth)Authentication"
+    $appHostConfigSection = $appHostConfig.GetSection("system.webServer/security/authentication/$authenticationType", $Site)
+    $appHostConfigSection.OverrideMode="Allow"
+    $webAdminSrvMgr.CommitChanges()
+    Start-Sleep 4
+}
+
+#Set the web.config
+[hashtable] $ConformanceSettingHash = [Ordered] @{
+    dbprovider = $jet4provider
+    dbconnectionstr = $jet4database
+    AdminEndPoint = "True"
+}
+
+#For Set-AppSettingsInWebConfig function, refer to Chapter 7
+foreach ($key in $ConformanceSettingHash.Keys) {
+    Set-AppSettingsInWebconfig -path $Path -key $key -value $ConformanceSettingHash[$key]
+}

@@ -1,0 +1,2 @@
+Invoke-CimMethod -Namespace root/Microsoft/Windows/DesiredStateConfiguration `
+      -ClassName MSFT_DSCLocalConfigurationManager -MethodName PerformRequiredConfigurationChecks -Arg @{Flags = [System.UInt32]3 }

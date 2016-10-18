@@ -1,0 +1,6 @@
+$ScriptBlock = {
+ $psISE.CurrentFile.Editor.SelectCaretLine()
+ $psISE.CurrentFile.Editor.SelectedText | clip
+}
+ 
+$psISE.CurrentPowerShellTab.AddOnsMenu.Submenus.Add("Copy _Current Line", $ScriptBlock, "Alt+C")

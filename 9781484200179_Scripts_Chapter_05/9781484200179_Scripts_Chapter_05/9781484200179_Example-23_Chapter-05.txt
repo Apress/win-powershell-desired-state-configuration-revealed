@@ -1,0 +1,11 @@
+Configuration ProcessDemo {
+    Node WSR2-1 {
+        WindowsProcess ProcessDemo {
+            Path = "Ping.exe"
+            Arguments = "Demo-Ad"
+            StandardOutputPath = "C:\Scripts\ping.txt"
+        }
+    }
+}
+
+ProcessDemo

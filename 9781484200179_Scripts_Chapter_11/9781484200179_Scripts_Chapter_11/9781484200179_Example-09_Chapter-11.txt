@@ -1,0 +1,1 @@
+Invoke-CimMethod -ComputerName WSR2-1,WC7-1,WC81-1,WS8R2-1 –Namespace "root/Microsoft/Windows/DesiredStateConfiguration" -ClassName "MSFT_DSCLocalConfigurationManager" -MethodName "TestConfiguration" | Select PSComputerName, InDesiredState

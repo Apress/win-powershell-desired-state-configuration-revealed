@@ -1,0 +1,6 @@
+#pragma namespace("\\\\.\\Root\\MyCustomNamespace")
+class MyCN_MyChildClass : MyCN_MyClass
+{
+	String ChildProperty;
+	String ChildValueArray [];
+};

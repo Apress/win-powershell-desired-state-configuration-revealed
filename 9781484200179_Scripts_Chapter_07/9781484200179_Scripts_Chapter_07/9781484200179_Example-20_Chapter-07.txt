@@ -1,0 +1,2 @@
+$null = New-Item -path "$ConfigurationPath" -itemType "directory" -Force
+$null = New-Item -path "$ModulePath" -itemType "directory" -Force

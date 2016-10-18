@@ -1,0 +1,47 @@
+Configuration ComplexConfiguration {
+    Node $AllNodes.Where({$_.Role -eq "Web"}).NodeName {
+            WindowsFeature IIS {
+                Name = "Web-Server"
+                IncludeAllSubFeature = $true
+                Ensure = "Present"
+            }
+
+            Service ServiceCheck {
+                Name = $ConfigurationData.WebConfig.ServiceToCheck
+                State = "Running"
+            }
+
+            Archive ScriptArchive {
+                Path = $ConfigurationData.WebConfig.SourcePath
+                Destination = $Node.Destination
+                Force = $Node.Force
+            }
+    }
+
+    Node $AllNodes.Where({$_.Role -eq "Database"}).NodeName {
+            WindowsProcess SQL {
+                Path = "C:\Program Files\Microsoft SQL Server\MSSQL\Binn\sqlservr.exe"
+                Arguments = ""
+                Ensure = "Present"    
+            }
+
+            Service ServiceCheck {
+                Name = $ConfigurationData.DBConfig.ServiceToCheck
+                State = "Running"                
+            }
+
+            Archive ScriptArchive {
+                Path = $ConfigurationData.DBConfig.SourcePath
+                Destination = $Node.Destination
+                Force = $Node.Force
+            }
+    }
+
+    Node $AllNodes.Where({-not ($_.Role) }).NodeName {
+            Archive ScriptArchive {
+                Path = $Node.SourcePath
+                Destination = $Node.Destination
+                Force = $Node.Force
+            }
+    }
+}

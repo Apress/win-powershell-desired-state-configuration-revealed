@@ -1,0 +1,9 @@
+/* 
+This is the first instance of MyCN_MyClass class
+*/
+instance of MyCN_MyClass
+{
+    KeyName = "PowerShell";
+    MyValue = "4.0";
+    UseValidation = True; //The default value of this property is false.
+};

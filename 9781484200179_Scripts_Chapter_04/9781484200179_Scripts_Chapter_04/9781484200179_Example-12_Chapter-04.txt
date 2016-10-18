@@ -1,0 +1,37 @@
+/*
+@TargetNode='WSR2-1'
+@GeneratedBy=Ravikanth
+@GenerationDate=05/06/2014 14:11:12
+@GenerationHost=Home-Desk
+*/
+
+instance of MSFT_RoleResource as $MSFT_RoleResource1ref
+{
+ResourceID = "[WindowsFeature]WebServer1";
+ DependsOn = {
+    "[WindowsFeature]ASP"
+};
+ SourceInfo = "C:\\Scripts\\WebSiteConfig.ps1::5::9::WindowsFeature";
+ Name = "Web-Server";
+ ModuleName = "PSDesiredStateConfiguration";
+ ModuleVersion = "1.0";
+
+};
+
+instance of MSFT_RoleResource as $MSFT_RoleResource2ref
+{
+ResourceID = "[WindowsFeature]ASP";
+ SourceInfo = "C:\\Scripts\\WebSiteConfig.ps1::11::9::WindowsFeature";
+ Name = "Web-Asp-Net45";
+ ModuleName = "PSDesiredStateConfiguration";
+ ModuleVersion = "1.0";
+
+};
+
+instance of OMI_ConfigurationDocument
+{
+ Version="1.0.0";
+ Author="Ravikanth";
+ GenerationDate="05/06/2014 14:11:12";
+ GenerationHost="Home-Desk";
+};

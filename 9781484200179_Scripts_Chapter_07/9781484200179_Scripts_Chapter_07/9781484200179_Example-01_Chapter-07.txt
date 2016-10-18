@@ -1,0 +1,26 @@
+Configuration ScriptDemo {
+    Node ("WC7-1", "WC81-1") {
+        Script ScriptDemo {
+            GetScript = {
+                @{
+                    GetScript = $GetScript
+                    SetScript = $SetScript
+                    TestScript = $TestScript
+                    Result = "TestScript"
+                }
+            }   
+
+            SetScript = {
+                Write-Verbose "Sleeping for 50 seconds"
+                Start-Sleep 50
+                Write-Verbose "Completed Script task"
+            }
+
+            TestScript = {
+                $false
+            }
+        }
+    }
+}
+
+ScriptDemo

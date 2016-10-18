@@ -1,0 +1,23 @@
+instance of HostsFile as $HostsFile1ref
+{
+ResourceID = "[HostsFile]HostsEntry::[BaseServerConfiguration]BaseConfig1";
+ Ensure = "Present";
+ hostName = "SQL-DB-1";
+ SourceInfo = "C:\\Program Files\\WindowsPowerShell\\Modules\\DSCDeepDive\\DSCResources\\BaseConfig\\BaseConfig.Schema.psm1::28::5::HostsFile";
+ ModuleName = "DSCDeepDive";
+ ipAddress = "10.10.10.192";
+ ModuleVersion = "1.0";
+
+};
+
+instance of HostsFile as $HostsFile2ref
+{
+ResourceID = "[HostsFile]HostEntry";
+ Ensure = "Present";
+ hostName = "Gateway";
+ SourceInfo = "::11::9::HostsFile";
+ ModuleName = "DSCDeepDive";
+ ipAddress = "192.168.100.1";
+ ModuleVersion = "1.0";
+
+};

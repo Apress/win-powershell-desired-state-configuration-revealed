@@ -1,0 +1,1 @@
+$null = New-WebApplication -Name $app -Site $site -PhysicalPath $path -ApplicationPool $appPool

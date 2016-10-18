@@ -1,0 +1,11 @@
+Configuration GroupDemo {
+    Node Home-Desk {
+        Group GroupDemo {
+            GroupName = "Group1"
+            MembersToInclude = "User3"
+            MembersToExclude = "User1"
+        }
+    }
+}
+
+GroupDemo

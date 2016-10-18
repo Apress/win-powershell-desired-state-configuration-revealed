@@ -1,0 +1,27 @@
+Configuration WebSiteConfig
+{
+    Node MyWebServer
+    {
+        WindowsFeature IIS
+        {
+            Ensure = "Present"
+            Name = "Web-Server"
+        }
+ 
+        WindowsFeature ASP
+        {
+            Ensure = "Present"
+            Name = "Web-Asp-Net45"
+        }
+ 
+        Website MyWebSite
+        {
+            Ensure = "Present"
+            Name = "MyWebSite"
+            PhysicalPath = "C:\Inetpub\MyWebSite"
+            State = "Started"
+            Protocol = @("http")
+            BindingInfo = @("*:80:")
+        }
+    }
+}

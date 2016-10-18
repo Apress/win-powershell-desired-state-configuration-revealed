@@ -1,0 +1,19 @@
+Configuration DependsOnDemo {
+    Node Home-Desk {
+        Group GroupDemo {
+            GroupName = "Group1"
+            MembersToInclude = "User1"
+            DependsOn = "[user]UserDemo1","[user]UserDemo2"
+        }
+
+        User UserDemo1 {
+            UserName = "User1"
+        }
+
+        User UserDemo2 {
+            UserName = "User2"
+        }
+    }
+}
+
+DependsOnDemo

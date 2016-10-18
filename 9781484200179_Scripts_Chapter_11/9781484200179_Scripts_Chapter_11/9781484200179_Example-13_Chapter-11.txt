@@ -1,0 +1,15 @@
+Configuration DemoConfig {
+    Node localhost {
+        File DemoFile {
+            DestinationPath = "C:\Scripts\Temp.txt"
+            Contents = ""
+            Ensure = "Present"
+        }
+
+        WindowsProcess DemoProcess {
+            Path = "Notepad.exe"
+            Arguments = ""
+            Ensure = "Present"
+        }
+    }
+} 

@@ -1,0 +1,6 @@
+instance of MyCN_MyClass
+{
+    KeyName = "PowerShell";
+    MyValue = "4.0";
+    UseValidation = True;
+};

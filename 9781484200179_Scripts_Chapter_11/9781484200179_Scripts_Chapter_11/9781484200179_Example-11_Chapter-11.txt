@@ -1,0 +1,2 @@
+Get-ScheduledTask -TaskName Consistency, DSCRestartBootTask | 
+Select TaskName, @{Name="Action";Expression={[regex]::Matches($_.Actions.Arguments, '(?<=")[^"]*(?=")')}} | Format-List

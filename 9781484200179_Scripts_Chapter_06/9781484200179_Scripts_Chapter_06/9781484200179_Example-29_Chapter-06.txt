@@ -1,0 +1,3 @@
+Set-DscLocalConfigurationManager -Path .\LCMCertConfig
+
+Get-DscLocalConfigurationManager

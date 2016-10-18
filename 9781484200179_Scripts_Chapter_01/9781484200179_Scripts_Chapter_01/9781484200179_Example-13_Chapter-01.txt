@@ -1,0 +1,3 @@
+PS C:\> ${Version Number} = 4.0
+PS C:\> ${Version Number}
+4.0

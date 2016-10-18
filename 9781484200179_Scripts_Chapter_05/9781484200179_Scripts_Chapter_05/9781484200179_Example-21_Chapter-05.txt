@@ -1,0 +1,10 @@
+Configuration ProcessDemo {
+    Node WSR2-1 {
+        WindowsProcess ProcessDemo {
+            Path = "Notepad.exe"
+            Arguments = ""
+        }
+    }
+}
+
+ProcessDemo

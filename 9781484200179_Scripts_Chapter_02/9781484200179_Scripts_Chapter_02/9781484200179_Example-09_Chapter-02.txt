@@ -1,0 +1,1 @@
+Get-WSManInstance wmicimv2/Win32_Service -Selectorset @{Name="WinRM"} -ComputerName WC81-1

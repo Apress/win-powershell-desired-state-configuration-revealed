@@ -1,0 +1,8 @@
+if ($a -le 10) {
+    "Value is less-than or equal to 10"
+}
+elseif ($a -ge 20) {
+    "Value is greater-than or equal to 20"
+} else {
+    "Value is between 10 and 20"
+}

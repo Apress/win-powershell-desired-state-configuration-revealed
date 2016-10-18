@@ -1,0 +1,1 @@
+Get-ChildItem -Path C:\Windows\system32 -Recurse *.dll | Where-Object -FilterScript { $_.Length -gt 10MB }

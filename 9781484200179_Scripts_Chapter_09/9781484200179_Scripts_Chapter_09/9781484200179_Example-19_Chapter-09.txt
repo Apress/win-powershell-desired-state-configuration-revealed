@@ -1,0 +1,1 @@
+New-ModuleManifest -Path .\BaseServerConfiguration.psd1 -ModuleVersion "1.0" -RootModule "BaseServerConfiguration.Schema.psm1"

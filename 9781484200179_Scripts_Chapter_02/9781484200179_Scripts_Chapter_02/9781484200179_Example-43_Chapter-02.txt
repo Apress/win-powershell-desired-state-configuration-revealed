@@ -1,0 +1,1 @@
+([wmiclass]"Win32_CurrentTime").GetText("mof")

@@ -1,0 +1,42 @@
+function Set-TargetResource
+{
+    param (
+        [parameter(Mandatory)]
+        [string]
+        $hostName,
+        [parameter(Mandatory)]
+        [string]
+        $ipAddress,
+        [ValidateSet('Present','Absent')]
+        [string]
+        $Ensure = 'Present'
+    )     
+
+    $hostEntry = "`n${ipAddress}`t${hostName}"
+    $hostsFilePath = "${env:windir}\system32\drivers\etc\hosts"
+
+    try {
+
+        if ($Ensure -eq 'Present')
+        {
+            Write-Verbose "Creating hosts file entry '$hostEntry'"
+            Add-Content -Path $hostsFilePath  -Value $hostEntry -Force -Encoding ASCII -ErrorAction Stop
+            Write-Verbose "Hosts file entry '$hostEntry' added"
+        }
+        else
+        {
+            Write-Verbose "Removing hosts file entry '$hostEntry'"
+            ((Get-Content $hostsFilePath) -notmatch "^\s*$") -notmatch "^[^#]*$ipAddress\s+$hostName" | Set-Content $hostsFilePath
+            Write-Verbose "Hosts file entry '$hostEntry' removed"
+        }
+    }
+    catch {
+            $exception = $_    
+            Write-Verbose "An error occurred while running Set-TargetResource function"
+            while ($exception.InnerException -ne $null)
+            {
+                $exception = $exception.InnerException
+                Write-Verbose $exception.message
+            }
+    }
+}

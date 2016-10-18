@@ -1,0 +1,26 @@
+$mof = @'
+#pragma namespace("\\\\.\\Root")
+
+Instance of __Namespace
+{
+  Name = "MyCustomNamespace";
+};
+
+#pragma namespace("\\\\.\\Root\\MyCustomNamespace")
+class MyCN_MyClass
+{
+  [Key] string KeyName;
+  String MyValue;
+  Boolean UseValidation = false;
+};
+
+instance of MyCN_MyClass
+{
+    KeyName="PowerShell";
+    MyValue="4.0";
+    UseValidation=True;
+};
+'@
+$mof | Out-file -Encoding ascii $env:TMP\myMOF.mof
+
+mofcomp.exe $env:TMP\myMOF.mof

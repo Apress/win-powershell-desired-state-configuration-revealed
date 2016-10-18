@@ -1,0 +1,1 @@
+mofcomp.exe -check <mofilename>

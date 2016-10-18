@@ -1,0 +1,7 @@
+#Use a Web Server certificate and not a client authentication cert
+$ServerCert = (Get-ChildItem Cert:\LocalMachine\my).Where({$_.EnhancedKeyUsageList.FriendlyName -eq 'Server Authentication'})
+if ($ServerCert) {
+    $certificate = $ServerCert.Thumbprint
+} else {
+    throw "there is no server authentication certificate"
+}
